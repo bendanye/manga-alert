@@ -1,5 +1,7 @@
+const manga_url = process.env.MANGA_URL;
+
 const getMangaListOfChapters = async(page, mangaTitle) => {
-    await page.goto(`http://mangareader.cc/manga/${mangaTitle}`);
+    await page.goto(`${manga_url}/${mangaTitle}`);
 
     await page.waitForXPath("/html[1]/body[1]/div[3]/div[3]/div[1]/div[1]/div[1]/div[2]/div[4]/ul[1]");
 
