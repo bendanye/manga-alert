@@ -49,6 +49,3 @@ I am interested in few manga and I wanted to know immediately if there is new ch
 - Chrome extension
 - Telegram Bot
 
-## Issues
-
-Currently the website I been using it, alot of the chapters are deleted so these manga are already outdated compared to other websites.
