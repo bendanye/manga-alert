@@ -40,15 +40,11 @@ npm start
 * A command line tool
 * Only tested and works on a particular website.
 
-## Impetus
-
-I am interested in few manga and I wanted to know immediately if there is new chapter available when I switched on my computer instead of having to manually click on each manga.
-
 ## Possible Future enhancement
 
 - Chrome extension
 - Telegram Bot
 
-## Issues
+## Impetus
 
-Currently the website I been using it, alot of the chapters are deleted so these manga are already outdated compared to other websites.
+I am interested in few manga and I wanted to know immediately if there is new chapter available when I switched on my computer instead of having to manually click on each manga.
