@@ -14,6 +14,7 @@
     "jest": "^24.8.0"
   },
   "dependencies": {
+    "colors": "^1.4.0",
     "dotenv": "^8.2.0",
     "puppeteer": "^7.1.0"
   }

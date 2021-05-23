@@ -3,6 +3,7 @@ require('dotenv').config();
 const puppeteer = require('puppeteer');
 
 const fs = require('fs');
+const colors = require('colors');
 
 const { getMangaListOfChapters } = require('./managerscraper');
 
@@ -11,7 +12,7 @@ async function run() {
 	console.log("Starting to check...");
 	
 	const browser = await puppeteer.launch({
-		headless: true
+		headless: false
 	  });
 
     const page = await browser.newPage();
@@ -25,7 +26,7 @@ async function run() {
 		if (chapterVolume.includes(manga.last_chapter)) {
 			console.log(`${manga.url_ends_with} - No new chapter found`);
 		} else {
-			console.log(`${manga.url_ends_with} - New ${chapterVolume} ! Please go read now!`);
+			console.log(`${manga.url_ends_with} - New ${chapterVolume} ! Please go read now!`.green);
 		}
 	}
 
