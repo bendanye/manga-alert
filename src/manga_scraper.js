@@ -1,6 +1,6 @@
-const manga_url = process.env.MANGA_URL;
 
-const getMangaListOfChapters = async(page, mangaTitle) => {
+
+const getMangaListOfChapters = async(page, manga_url, mangaTitle) => {
     await page.goto(`${manga_url}/${mangaTitle}`);
 
     const getXpath = await getMangaChaptersElement(page);

@@ -5,7 +5,9 @@ const puppeteer = require('puppeteer');
 const fs = require('fs');
 const colors = require('colors');
 
-const { getMangaListOfChapters } = require('./managerscraper');
+const manga_url = process.env.MANGA_URL;
+
+const { getMangaListOfChapters } = require('./manga_scraper');
 
 async function run() {
 	const mangaReadingList = getMangaReadingList();
@@ -18,7 +20,7 @@ async function run() {
     const page = await browser.newPage();
 
 	for(const manga of mangaReadingList) {
-		const chapters = await getMangaListOfChapters(page, manga.url_ends_with);
+		const chapters = await getMangaListOfChapters(page, manga_url, manga.url_ends_with);
 		const chapterWithVolume = getLastChapter(chapters);
 
 		const chapterVolume = getChapterVolume(chapterWithVolume);
