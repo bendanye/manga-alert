@@ -1,6 +1,30 @@
 
+const puppeteer = require('puppeteer');
 
-const getMangaListOfChapters = async(page, manga_url, mangaTitle) => {
+const getMangaListOfChapters = async(manga_url, mangaReadingList) => {
+    const browser = await puppeteer.launch({
+		headless: false
+	  });
+
+    const page = await browser.newPage();
+
+    let result = [];
+
+    for(const manga of mangaReadingList) {
+		const chapters = await getChapters(page, manga_url, manga.url_ends_with);
+        result.push({
+            "name": manga.url_ends_with,
+            chapters
+        })
+    }
+
+    await page.close();
+    await browser.close();
+
+    return result;
+}
+
+const getChapters = async(page, manga_url, mangaTitle) => {
     await page.goto(`${manga_url}/${mangaTitle}`);
 
     const getXpath = await getMangaChaptersElement(page);

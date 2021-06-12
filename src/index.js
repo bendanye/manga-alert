@@ -1,7 +1,5 @@
 require('dotenv').config();
 
-const puppeteer = require('puppeteer');
-
 const fs = require('fs');
 const colors = require('colors');
 
@@ -12,17 +10,14 @@ const { getMangaListOfChapters } = require('./manga_scraper');
 async function run() {
 	const mangaReadingList = getMangaReadingList();
 	console.log("Starting to check...");
-	
-	const browser = await puppeteer.launch({
-		headless: false
-	  });
 
-    const page = await browser.newPage();
+	const mangaWithChapters = await getMangaListOfChapters(manga_url, mangaReadingList);
 
 	for(const manga of mangaReadingList) {
-		const chapters = await getMangaListOfChapters(page, manga_url, manga.url_ends_with);
-		const chapterWithVolume = getLastChapter(chapters);
 
+		const { chapters } = mangaWithChapters.find(o => o.name === manga.url_ends_with);
+
+		const chapterWithVolume = getLastChapter(chapters);
 		const chapterVolume = getChapterVolume(chapterWithVolume);
 
 		if (chapterVolume.includes(manga.last_chapter)) {
@@ -31,8 +26,6 @@ async function run() {
 			console.log(`${manga.url_ends_with} - New ${chapterVolume} ! Please go read now!`.green);
 		}
 	}
-
-    await browser.close();
 
 	function getMangaReadingList() {
 		const rawdata = fs.readFileSync('./mangareading.json');
@@ -46,7 +39,6 @@ async function run() {
 
 	function getChapterVolume(titleWithChapter) {
 		const indexWithChapter = titleWithChapter.indexOf("Chapter");
-
 		const chapter = titleWithChapter.substring(indexWithChapter);
 		return chapter;
 	}
