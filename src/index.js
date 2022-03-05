@@ -19,7 +19,7 @@ async function run() {
 		if (manga.status === "NO_UPDATE") {
 			console.log(`${manga.name} - No new chapter found`);
 		} else {
-			console.log(`${manga.name} - New ${chapterVolume} ! Please go read now!`.green);
+			console.log(`${manga.name} - New ${manga.latest_chapter} ! Please go read now!`.green);
 		}
 	}
 

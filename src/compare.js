@@ -10,7 +10,8 @@ const compare = async(mangaReadingList, mangaWithChapters) => {
 
         results.push({
             "name": manga.url_ends_with,
-            "status": chapterVolume.includes(manga.last_chapter) ? 'NO_UPDATE' : chapterVolume
+            "status": chapterVolume.includes(manga.last_chapter) ? 'NO_UPDATE' : "UPDATE",
+            "latest_chapter": chapterVolume
         })
     }
 

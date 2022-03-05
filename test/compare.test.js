@@ -35,11 +35,13 @@ test('should able to get list of manga with their chapter updates', async() => {
     expect(results).toStrictEqual([
         {
             'name': 'helloworld',
-            'status': "Chapter 218"
+            'status': "UPDATE",
+            'latest_chapter': "Chapter 218"
         },
         {
             'name': 'hello_js',
-            'status': "NO_UPDATE"
+            'status': "NO_UPDATE",
+            'latest_chapter': "Chapter 5"
         }
     ]);
 });
