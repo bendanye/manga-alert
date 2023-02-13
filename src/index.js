@@ -10,7 +10,6 @@ const { compare } = require('./compare');
 
 async function run() {
 	const mangaReadingList = getMangaReadingList();
-	console.log("Starting to check...");
 
 	const mangaWithChapters = await getMangaListOfChapters(manga_url, mangaReadingList);
 	const compareResults = await compare(mangaReadingList, mangaWithChapters);
